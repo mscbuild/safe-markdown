@@ -1,3 +1,9 @@
+const { JSDOM } = require('jsdom');
+const createDOMPurify = require('dompurify');
+const { marked } = require('marked');
+
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
