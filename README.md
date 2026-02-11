@@ -32,6 +32,10 @@ The project includes a set of tests simulating real XSS vectors:
 
 1.Run `npm install`
 
-2.Run tests: `npm test`
+2.Dependency audit: `npm audit`
 
-3.View the cleanup result: `npm start`
+3.Static analysis (SAST): `npm run lint`
+
+4.Testing for XSS vulnerabilities: `npm test`
+
+5.Checking functionality: `npm start`
