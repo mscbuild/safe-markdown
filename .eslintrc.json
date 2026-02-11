@@ -1,0 +1,8 @@
+{
+  "plugins": ["security"],
+  "extends": ["eslint:recommended", "plugin:security/recommended"],
+  "rules": {
+    "no-inner-html": "off", 
+    "security/detect-object-injection": "warn"
+  }
+}
