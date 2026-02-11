@@ -1,18 +1,27 @@
----
-
-### 4. CI/CD Пайплайн (`.github/workflows/security.yml`)
-```yaml
 name: Security-Check
-on: [push, pull_request]
+
+on: [push, pull_request]  # Исправленный синтаксис
 
 jobs:
-  audit:
+  security_scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Install
-        run: npm install
-      - name: Lint (Security)
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci  # Используем ci для чистой установки в CI-среде
+
+      - name: Run ESLint (Security Audit)
         run: npx eslint ./src --ext .js
-      - name: Run Security Tests
+        # Пайплайн упадет, если линтер найдет ошибки безопасности
+
+      - name: Run XSS Payload Tests
         run: npm test
+        # Пайплайн упадет, если хотя бы один XSS вектор прорвется
