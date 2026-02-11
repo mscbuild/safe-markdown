@@ -1,6 +1,6 @@
 name: Security-Check
 
-on: [push, pull_request]  # Исправленный синтаксис
+on: [push, pull_request]
 
 jobs:
   security_scan:
@@ -16,12 +16,14 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci  # Используем ci для чистой установки в CI-среде
+        run: npm ci
+
+      - name: Dependency Vulnerability Audit
+        run: npm audit --audit-level=high
+        # Пайплайн упадет только при наличии уязвимостей уровня High и Critical
 
       - name: Run ESLint (Security Audit)
         run: npx eslint ./src --ext .js
-        # Пайплайн упадет, если линтер найдет ошибки безопасности
 
       - name: Run XSS Payload Tests
         run: npm test
-        # Пайплайн упадет, если хотя бы один XSS вектор прорвется
