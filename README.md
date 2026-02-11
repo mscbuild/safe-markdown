@@ -29,5 +29,6 @@ safe-markdown/
 
 ## 🧪 Security Testing
 The project includes a set of tests simulating real XSS vectors:
-```bash
-npm test
+1.Run `npm install`
+2.Run tests: `npm test`
+3.View the cleanup result: `npm start`
