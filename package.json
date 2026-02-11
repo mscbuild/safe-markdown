@@ -1,0 +1,24 @@
+{
+  "name": "safe-markdown-editor",
+  "version": "1.0.0",
+  "description": "Secure Markdown parser with XSS protection",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ./src",
+    "start": "node src/index.js"
+  },
+  "keywords": ["security", "xss", "sast", "markdown"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "dompurify": "^3.0.6",
+    "jsdom": "^22.1.0",
+    "marked": "^9.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-plugin-security": "^1.7.1",
+    "jest": "^29.7.0"
+  }
+}
